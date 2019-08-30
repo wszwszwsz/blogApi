@@ -16,12 +16,24 @@
     </style>
 
     <div class="example-wrapper">
-        <h2>Piszemy bloga</h2>
-        {{ form(postAddForm) }}
-        {#        <form method="POST" action="{{ path('post_write_blog') }}">#}
-        {#            <input name="title" type="text" id="myInput" placeholder="Post title..."/>#}
-        {#            <input name="content" type="text" id="content" placeholder="Post content"/>#}
-        {#            <button type="submit" class="addBtn">Opublikuj</button>#}
-        {#        </form>#}
+        {% if error %}
+            <div class="alert alert-danger">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+        <form method="POST" action="{{path('login')}}" class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal">Proszę się zalogować</h1>
+            <label for="inputEmail" class="sr-only">Nazwa</label>
+            <input type="text" name="text" id="inputEmail" class="form-control" placeholder="Nazwa" required autofocus>
+            <label for="inputPassword" class="sr-only">Hasło</label>
+            <input type="password" name="_password" id="inputPassword" class="form-control" placeholder="Hasło" required>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Pamiętaj mnie
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+        </form>
     </div>
 {% endblock %}

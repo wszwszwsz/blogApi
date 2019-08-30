@@ -9,7 +9,8 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/' => [[['_route' => 'main', '_controller' => 'App\\Controller\\FrontController::main'], null, null, null, false, false, null]],
-        '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\LoginController::login'], null, null, null, false, false, null]],
+        '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\LoginController::logout'], null, null, null, false, false, null]],
         '/post/add' => [[['_route' => 'post_write_blog', '_controller' => 'App\\Controller\\PostBlogController::create'], null, null, null, false, false, null]],
         '/registry' => [[['_route' => 'registry', '_controller' => 'App\\Controller\\RegistryController::index'], null, null, null, false, false, null]],
     ],

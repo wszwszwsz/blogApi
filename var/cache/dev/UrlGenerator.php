@@ -5,7 +5,8 @@
 return [
     '_twig_error_test' => [['code', '_format'], ['_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], []],
     'main' => [[], ['_controller' => 'App\\Controller\\FrontController::main'], [], [['text', '/']], [], []],
-    'login' => [[], ['_controller' => 'App\\Controller\\LoginController::index'], [], [['text', '/login']], [], []],
+    'login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], []],
+    'logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], []],
     'post_write_blog' => [[], ['_controller' => 'App\\Controller\\PostBlogController::create'], [], [['text', '/post/add']], [], []],
     'post_blog' => [['id'], ['_controller' => 'App\\Controller\\PostBlogController::postBlog'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/post']], [], []],
     'registry' => [[], ['_controller' => 'App\\Controller\\RegistryController::index'], [], [['text', '/registry']], [], []],

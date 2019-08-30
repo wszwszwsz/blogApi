@@ -2,11 +2,10 @@
 
 namespace App\Controller;
 
-use App\Form\PostAddType;
-use App\Service\PostService;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends AbstractController
 {
@@ -15,34 +14,20 @@ class LoginController extends AbstractController
     /**
      * @Route("/login", name="login")
      */
-    public function index()
+    public function login(AuthenticationUtils $helper)
     {
         return $this->render('login/login.html.twig', [
-            'controller_name' => 'LoginController',
+            'error' => $helper->getLastAuthenticationError()
         ]);
     }
 
     /**
-     * @Route("/add", name="post_write_blog")
+     * @Route("/logout", name="logout")
+     * @throws \Exception
      */
-    public function create(Request $request, PostService $postService)
+    public function logout() : void
     {
-        $postAddForm = $this->createForm(PostAddType::class);
-        $postAddForm->handleRequest($request);
-
-        if ($postAddForm->isSubmitted() && $postAddForm->isValid()) {
-            $title = $postAddForm->get('title')->getData();
-            $content = $postAddForm->get('content')->getData();
-
-            $postService->addPost($title, $content);
-
-            return $this->redirectToRoute("main");
-        }
-
-        return $this->render('post_blog/post_blog.html.twig', [
-            'controller_name' => 'FrontController',
-            'postAddForm' => $postAddForm->createView(),
-        ]);
+        throw new \Exception('This should never be reached!');
     }
 //    /**
 //     * @Route("/{id}", name="post_blog")
