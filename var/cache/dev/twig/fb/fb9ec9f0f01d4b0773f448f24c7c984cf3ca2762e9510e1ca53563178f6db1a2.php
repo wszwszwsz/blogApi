@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* front/index.html.twig */
+/* front/post_blog.html.twig */
 class __TwigTemplate_d24b7b4545b272de2910f2a4e8ec61712a9a1dac582085d82b056a5d2c2466b1 extends \Twig\Template
 {
     private $source;
@@ -40,11 +40,11 @@ class __TwigTemplate_d24b7b4545b272de2910f2a4e8ec61712a9a1dac582085d82b056a5d2c2
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "front/index.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "front/post_blog.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "front/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "front/post_blog.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
-        
+
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
     }
@@ -57,7 +57,7 @@ class __TwigTemplate_d24b7b4545b272de2910f2a4e8ec61712a9a1dac582085d82b056a5d2c2
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
         echo "Blog®";
-        
+
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
     }
@@ -128,14 +128,14 @@ class __TwigTemplate_d24b7b4545b272de2910f2a4e8ec61712a9a1dac582085d82b056a5d2c2
 
     </div>
 ";
-        
+
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "front/index.html.twig";
+        return "front/post_blog.html.twig";
     }
 
     public function isTraitable()
@@ -209,9 +209,9 @@ class __TwigTemplate_d24b7b4545b272de2910f2a4e8ec61712a9a1dac582085d82b056a5d2c2
     {#                            href=\"{{ 'C:/Users/User/PhpstormProjects/blog/src/Controller/FrontController.php'|file_link(0) }}\">src/Controller/FrontController.php</a></code>#}
     {#            </li>#}
     {#            <li>Your template at <code><a#}
-    {#                            href=\"{{ 'C:/Users/User/PhpstormProjects/blog/templates/front/index.html.twig'|file_link(0) }}\">templates/front/index.html.twig</a></code>#}
+    {#                            href=\"{{ 'C:/Users/User/PhpstormProjects/blog/templates/front/post_blog.html.twig'|file_link(0) }}\">templates/front/post_blog.html.twig</a></code>#}
     {#            </li>#}
     {#        </ul>#}
-", "front/index.html.twig", "C:\\Users\\User\\PhpstormProjects\\blog\\templates\\front\\index.html.twig");
+", "front/post_blog.html.twig", "C:\\Users\\User\\PhpstormProjects\\blog\\templates\\front\\post_blog.html.twig");
     }
 }

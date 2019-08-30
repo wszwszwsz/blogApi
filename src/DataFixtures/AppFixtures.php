@@ -26,7 +26,7 @@ class AppFixtures extends Fixture
          – istniejący na Ziemi, a być może też na innych planetach[1][2]
         właściwość pewnych układów fizycznych (→ organizmów), w których zachodzą procesy życiowe[3][4][5].');
                 $post->setCreatedAt(new \DateTime());
-        $post->getUser();
+        $post->setUser($user);
 
         $manager->persist($post);
 
