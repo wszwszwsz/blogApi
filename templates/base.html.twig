@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <a  href="{{ path('main') }}">Strona główna</a>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body bgcolor=orange>
+
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
