@@ -18,11 +18,12 @@
 
     <div class="example-wrapper">
         <h2>Piszemy bloga</h2>
-        <form method="POST" action="{{ path('post_write_blog') }}">
-            <input name="title" type="text" id="myInput" placeholder="Post title..."/>
-            <input name="content" type="text" id="content" placeholder="Post content"/>
-            <button type="submit" class="addBtn">Opublikuj</button>
-        </form>
+        {{ form(postAddForm) }}
+{#        <form method="POST" action="{{ path('post_write_blog') }}">#}
+{#            <input name="title" type="text" id="myInput" placeholder="Post title..."/>#}
+{#            <input name="content" type="text" id="content" placeholder="Post content"/>#}
+{#            <button type="submit" class="addBtn">Opublikuj</button>#}
+{#        </form>#}
     </div>
 
 {% endblock %}
