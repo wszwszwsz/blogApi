@@ -1,3 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block title %}Rejestracja{% endblock %}
-{% block body %}<br /> <br />Strona z rejestraaacją xD{% endblock %}
+{% block body %}
+
+    {{ form(UserRegistryForm) }}
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+
+
+{% endblock %}

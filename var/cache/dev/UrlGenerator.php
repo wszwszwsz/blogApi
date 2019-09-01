@@ -9,5 +9,5 @@ return [
     'logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], []],
     'post_write_blog' => [[], ['_controller' => 'App\\Controller\\PostBlogController::create'], [], [['text', '/post/add']], [], []],
     'post_blog' => [['id'], ['_controller' => 'App\\Controller\\PostBlogController::postBlog'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/post']], [], []],
-    'registry' => [[], ['_controller' => 'App\\Controller\\RegistryController::index'], [], [['text', '/registry']], [], []],
+    'registry' => [[], ['_controller' => 'App\\Controller\\RegistryController::register'], [], [['text', '/registry']], [], []],
 ];

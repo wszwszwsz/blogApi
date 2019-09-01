@@ -9,6 +9,7 @@ use App\Service\PostService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Controller\FrontController;
 
 /**
  * Class PostBlogController
@@ -31,9 +32,7 @@ class PostBlogController extends AbstractController
         if ($postAddForm->isSubmitted() && $postAddForm->isValid()) {
             $title = $postAddForm->get('title')->getData();
             $content = $postAddForm->get('content')->getData();
-
-            $postService->addPost($title, $content);
-
+            $postService->addPost($title, $content );
             return $this->redirectToRoute("main");
         }
 

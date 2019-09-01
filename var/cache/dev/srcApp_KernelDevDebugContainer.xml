@@ -302,7 +302,7 @@
     <service id="App\Form\PostAddType" class="App\Form\PostAddType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
-    <service id="App\Form\UserLoginType" class="App\Form\UserLoginType" autowire="true" autoconfigure="true">
+    <service id="App\Form\UserRegisterType" class="App\Form\UserRegisterType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\PostRepository" class="App\Repository\PostRepository" autowire="true" autoconfigure="true">
@@ -314,6 +314,9 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Service\PostService" class="App\Service\PostService" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
+    <service id="App\Service\UserService" class="App\Service\UserService" autowire="true" autoconfigure="true">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
@@ -588,7 +591,7 @@
       </argument>
       <argument type="collection">
         <argument>App\Form\PostAddType</argument>
-        <argument>App\Form\UserLoginType</argument>
+        <argument>App\Form\UserRegisterType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -882,7 +885,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator..vvH7t."/>
+      <argument type="service" id=".service_locator.IPA3oA8"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3199,8 +3202,8 @@
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PostAddType" class="App\Form\PostAddType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\PostAddType" class="App\Form\PostAddType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserLoginType" class="App\Form\UserLoginType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\UserLoginType" class="App\Form\UserLoginType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserRegisterType" class="App\Form\UserRegisterType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\UserRegisterType" class="App\Form\UserRegisterType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PostRepository" class="App\Repository\PostRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PostRepository" class="App\Repository\PostRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
@@ -3379,13 +3382,22 @@
         <argument key="postService" type="service" id="App\Service\PostService"/>
       </argument>
     </service>
-    <service id=".service_locator.QODxEVF" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.FlG57SJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="UserService" type="service" id="App\Service\UserService"/>
+        <argument key="password_encoder" type="service" id="security.user_password_encoder.generic"/>
+      </argument>
+    </service>
+    <service id=".service_locator.qoOB3AW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\LoginController::login" type="service" id=".service_locator.DmTkD_n"/>
         <argument key="App\Controller\PostBlogController::create" type="service" id=".service_locator.deS.S1s"/>
+        <argument key="App\Controller\RegistryController::register" type="service" id=".service_locator.FlG57SJ"/>
         <argument key="App\Controller\LoginController:login" type="service" id=".service_locator.DmTkD_n"/>
         <argument key="App\Controller\PostBlogController:create" type="service" id=".service_locator.deS.S1s"/>
+        <argument key="App\Controller\RegistryController:register" type="service" id=".service_locator.FlG57SJ"/>
       </argument>
     </service>
     <service id=".service_locator.LtnrEkg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -3447,11 +3459,11 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator..vvH7t." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.IPA3oA8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\PostAddType" type="service" id="App\Form\PostAddType"/>
-        <argument key="App\Form\UserLoginType" type="service" id="App\Form\UserLoginType"/>
+        <argument key="App\Form\UserRegisterType" type="service" id="App\Form\UserRegisterType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service" id="form.type.file"/>
@@ -3685,12 +3697,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.QODxEVF"/>
+      <argument type="service" id=".service_locator.qoOB3AW"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.QODxEVF"/>
+      <argument type="service" id=".service_locator.qoOB3AW"/>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.q7elrDA"/>
@@ -3916,7 +3928,7 @@
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.QODxEVF"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.qoOB3AW"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
