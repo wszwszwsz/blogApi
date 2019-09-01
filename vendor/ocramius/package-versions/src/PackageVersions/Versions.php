@@ -97,13 +97,13 @@ final class Versions
   'nikic/php-parser' => 'v4.2.3@e612609022e935f3d0337c1295176505b41188c8',
   'symfony/maker-bundle' => 'v1.13.0@c4388410e2fb6321e77c5dd6e3cb2dba821f9fe6',
   'symfony/var-dumper' => 'v4.3.3@e4110b992d2cbe198d7d3b244d079c1c58761d07',
-  'paragonie/random_compat' => '2.*@4283b51f063a0785796834a59fe66e17262f139a',
-  'symfony/polyfill-ctype' => '*@4283b51f063a0785796834a59fe66e17262f139a',
-  'symfony/polyfill-iconv' => '*@4283b51f063a0785796834a59fe66e17262f139a',
-  'symfony/polyfill-php71' => '*@4283b51f063a0785796834a59fe66e17262f139a',
-  'symfony/polyfill-php70' => '*@4283b51f063a0785796834a59fe66e17262f139a',
-  'symfony/polyfill-php56' => '*@4283b51f063a0785796834a59fe66e17262f139a',
-  '__root__' => 'dev-developer@4283b51f063a0785796834a59fe66e17262f139a',
+  'paragonie/random_compat' => '2.*@85afb4d3a3c4ef20651394162bd6d064d6a58773',
+  'symfony/polyfill-ctype' => '*@85afb4d3a3c4ef20651394162bd6d064d6a58773',
+  'symfony/polyfill-iconv' => '*@85afb4d3a3c4ef20651394162bd6d064d6a58773',
+  'symfony/polyfill-php71' => '*@85afb4d3a3c4ef20651394162bd6d064d6a58773',
+  'symfony/polyfill-php70' => '*@85afb4d3a3c4ef20651394162bd6d064d6a58773',
+  'symfony/polyfill-php56' => '*@85afb4d3a3c4ef20651394162bd6d064d6a58773',
+  '__root__' => 'dev-developer@85afb4d3a3c4ef20651394162bd6d064d6a58773',
 );
 
     private function __construct()

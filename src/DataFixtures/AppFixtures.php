@@ -2,13 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Post;
-use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Entity\User;
 
-class AppFixtures extends Fixture
+class UserFixtures extends Fixture
 {
     public function __construct(UserPasswordEncoderInterface $password_encoder)
     {
@@ -17,11 +16,14 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        foreach ($this->getUserData() as [$name, $password])
+        foreach ($this->getUserData() as [$name, $last_name, $email, $password, $api_key, $roles])
         {
             $user = new User();
             $user->setName($name);
+            $user->setLastName($last_name);
+            $user->setEmail($email);
             $user->setPassword($this->password_encoder->encodePassword($user, $password));
+            $user->setRoles($roles);
 
             $manager->persist($user);
         }
@@ -32,9 +34,11 @@ class AppFixtures extends Fixture
     {
         return [
 
-            ['John', 'passw'],
-            ['Robert', 'passw'],
+            ['John', 'Wayne', 'jw@symf4.loc', 'passw', ['ROLE_ADMIN']],
+            ['John', 'Wayne2', 'jw2@symf4.loc', 'passw', ['ROLE_ADMIN']],
+            ['John', 'Doe', 'jd@symf4.loc', 'passw', ['ROLE_USER']]
+
         ];
     }
-
 }
+

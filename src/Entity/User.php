@@ -2,16 +2,15 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity("name")
+ * @ORM\Table(name="users")
+ * @UniqueEntity("email")
  */
 class User implements UserInterface
 {
@@ -23,10 +22,16 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="user")
+     * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message = "Please enter a valid email address.")
+     *  @Assert\Email()
      */
-    private $posts;
+    private $email;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     /**
      * @var string The hashed password
@@ -37,32 +42,16 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @var string
-     * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank(message = "Please enter a valid name.")
+     * @ORM\Column(type="string", length=45)
+     * @Assert\NotBlank(message = "Valid first name is required.")
      */
     private $name;
 
-    public function __construct()
-    {
-        $this->posts = new ArrayCollection();
-    }
-
     /**
-     * @return string
+     * @ORM\Column(type="string", length=45)
+     * @Assert\NotBlank(message = "Valid last name is required.")
      */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param string $password
-     */
-    public function setPassword(string $password): void
-    {
-        $this->password = $password;
-    }
+    private $last_name;
 
 
     public function getId(): ?int
@@ -70,97 +59,103 @@ class User implements UserInterface
         return $this->id;
     }
 
-    /**
-     * @return Collection
-     */
-    public function getPosts(): Collection
+    public function getEmail(): ?string
     {
-        return $this->posts;
+        return $this->email;
     }
 
-    public function addPost(Post $post)
+    public function setEmail(string $email): self
     {
-        if($this->posts->contains($post)) {
-            return;
-        }
+        $this->email = $email;
 
-        $this->posts->add($post);
-    }
-
-    public function removePost(Post $post)
-    {
-        if(!$this->posts->contains($post)) {
-            return;
-        }
-
-        $this->posts->removeElement($post);
+        return $this;
     }
 
     /**
-     * @return string
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
      */
-    public function getName(): string
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void
+    public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
     }
 
-    /**
-     * Returns the roles granted to the user.
-     *
-     *     public function getRoles()
-     *     {
-     *         return ['ROLE_USER'];
-     *     }
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return (Role|string)[] The user roles
-     */
-    public function getRoles()
+    public function getLastName(): ?string
     {
-        // TODO: Implement getRoles() method.
+        return $this->last_name;
     }
 
-    /**
-     * Returns the salt that was originally used to encode the password.
-     *
-     * This can return null if the password was not encoded using a salt.
-     *
-     * @return string|null The salt
-     */
-    public function getSalt()
+    public function setLastName(string $last_name): self
     {
-        // TODO: Implement getSalt() method.
+        $this->last_name = $last_name;
+
+        return $this;
     }
 
-    /**
-     * Returns the username used to authenticate the user.
-     *
-     * @return string The username
-     */
-    public function getUsername()
-    {
-        // TODO: Implement getUsername() method.
-    }
 
-    /**
-     * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
-     */
-    public function eraseCredentials()
-    {
-        // TODO: Implement eraseCredentials() method.
-    }
 }
+

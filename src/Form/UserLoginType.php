@@ -12,7 +12,7 @@ class UserLoginType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('password' textt)
+            ->add('password')
             ->add('name')
         ;
     }
@@ -25,15 +25,15 @@ class UserLoginType extends AbstractType
     }
 }
 
-
-->add('title', TextType::class, [
-    'label' => 'Tytuł',
-])
-    ->add('content', TextareaType::class, [
-        'label' => 'Treść',
-        'attr' => [
-            'placeholder' => 'Tu wpisz tekst posta'
-        ]
-    ])
-    ->add('submit', SubmitType::class)
-;
+//
+//->add('title', TextType::class, [
+//    'label' => 'Tytuł',
+//])
+//    ->add('content', TextareaType::class, [
+//        'label' => 'Treść',
+//        'attr' => [
+//            'placeholder' => 'Tu wpisz tekst posta'
+//        ]
+//    ])
+//    ->add('submit', SubmitType::class)
+//;
