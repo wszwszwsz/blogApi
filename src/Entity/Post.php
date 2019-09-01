@@ -34,11 +34,11 @@ class Post
      */
     private $created_at;
 
-//    /**
-//     * @var User
-//     * @ORM\ManyToOne(targetEntity="User", inversedBy="Post")
-//     */
-//    private $user;
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="Post")
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -92,20 +92,20 @@ class Post
     {
         $this->created_at = $created_at;
     }
-//
-//    /**
-//     * @return User
-//     */
-//    public function getUser(): User
-//    {
-//        return $this->user;
-//    }
-//
-//    /**
-//     * @param User $user
-//     */
-//    public function setUser(User $user): void
-//    {
-//        $this->user = $user;
-//    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
+    }
 }

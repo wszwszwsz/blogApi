@@ -7,7 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
 
-class UserFixtures extends Fixture
+class AppFixtures extends Fixture
 {
     public function __construct(UserPasswordEncoderInterface $password_encoder)
     {
@@ -16,7 +16,7 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        foreach ($this->getUserData() as [$name, $last_name, $email, $password, $api_key, $roles])
+        foreach ($this->getUserData() as [$name, $last_name, $email, $password, $roles])
         {
             $user = new User();
             $user->setName($name);
