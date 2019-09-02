@@ -17,7 +17,7 @@
 
     <div class="example-wrapper">
         {% if error %}
-            <div class="alert alert-danger">
+{#            <div class="alert alert-danger">#}
                 {{ error.messageKey|trans(error.messageData, 'security') }}
             </div>
         {% endif %}

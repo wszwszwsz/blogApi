@@ -386,6 +386,7 @@
     </service>
     <service id="App\Service\PostService" class="App\Service\PostService" autowire="true" autoconfigure="true">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="security.token_storage"/>
     </service>
     <service id="App\Service\UserService" class="App\Service\UserService" autowire="true" autoconfigure="true">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
@@ -1436,6 +1437,14 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>2048</argument>
+      </call>
+      <call method="addListener">
+        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -3704,10 +3713,11 @@
         <argument key="helper" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.deS.S1s" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.xK5Z638" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="postService" type="service" id="App\Service\PostService"/>
+        <argument key="user" type="service" id=".errored..service_locator.xK5Z638.App\Entity\User"/>
       </argument>
     </service>
     <service id=".service_locator.FlG57SJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -3717,14 +3727,14 @@
         <argument key="password_encoder" type="service" id="security.user_password_encoder.generic"/>
       </argument>
     </service>
-    <service id=".service_locator.qoOB3AW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.3L1C7hX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\LoginController::login" type="service" id=".service_locator.DmTkD_n"/>
-        <argument key="App\Controller\PostBlogController::create" type="service" id=".service_locator.deS.S1s"/>
+        <argument key="App\Controller\PostBlogController::create" type="service" id=".service_locator.xK5Z638"/>
         <argument key="App\Controller\RegistryController::register" type="service" id=".service_locator.FlG57SJ"/>
         <argument key="App\Controller\LoginController:login" type="service" id=".service_locator.DmTkD_n"/>
-        <argument key="App\Controller\PostBlogController:create" type="service" id=".service_locator.deS.S1s"/>
+        <argument key="App\Controller\PostBlogController:create" type="service" id=".service_locator.xK5Z638"/>
         <argument key="App\Controller\RegistryController:register" type="service" id=".service_locator.FlG57SJ"/>
       </argument>
     </service>
@@ -4073,13 +4083,14 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.qoOB3AW"/>
+      <argument type="service" id=".service_locator.3L1C7hX"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.qoOB3AW"/>
+      <argument type="service" id=".service_locator.3L1C7hX"/>
     </service>
+    <service id=".errored..service_locator.xK5Z638.App\Entity\User" class="App\Entity\User"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.q7elrDA"/>
       <argument type="collection">
@@ -4370,7 +4381,7 @@
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.qoOB3AW"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.3L1C7hX"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="validator" alias="debug.validator" public="true"/>
