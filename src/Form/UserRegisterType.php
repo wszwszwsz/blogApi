@@ -27,9 +27,10 @@ class UserRegisterType extends AbstractType
                 'label' => 'email',
             ] )
             ->add('password', RepeatedType::class, array(
-                'type' => PasswordType::class, [
-                    'label' => 'Haslo',
-                ] ) )
+                'type' => PasswordType::class,
+                    'first_options'  => array('label' => 'Password'),
+                    'second_options' => array('label' => 'Repeat Password'),
+                 ) )
                 // 'first_options'  => array('label' => 'Password'),
                 // 'second_options' => array('label' => 'Repeat Password'),   ->add('password', RepeatedType::class, array(
                 //                'type' => PasswordType::class,

@@ -28,14 +28,17 @@ class RegistryController extends AbstractController
         $UserRegistryForm = $this->createForm(UserRegisterType::class);
         $UserRegistryForm->handleRequest($request);
 
+
         if ($UserRegistryForm->isSubmitted() && $UserRegistryForm->isValid()) {
             $name = $UserRegistryForm->get('name')->getData();
             $last_name = $UserRegistryForm->get('last_name')->getData();
             $email = $UserRegistryForm->get('email')->getData();
             $password = $UserRegistryForm->get('password')->getData();
+
             $UserService->addUser($name, $last_name, $email, $password );
             return $this->redirectToRoute("main");
         }
+
         return $this->render('post_blog/post_blog.html.twig', [
             'controller_name' => 'FrontController',
             'postAddForm' => $UserRegistryForm->createView(),
