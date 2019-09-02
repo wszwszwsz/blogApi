@@ -26,7 +26,7 @@ class PostService
         $this->user = $tokenStorage->getToken()->getUser();
     }
 
-    public function addPost(Security $security, string $title, string $content, $user) {
+    public function addPost(string $title, string $content, $user) {
         $post = new Post();
         $post->setTitle($title);
         $post->setContent($content);
