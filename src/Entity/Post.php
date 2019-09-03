@@ -36,7 +36,7 @@ class Post
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="Post")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
      */
     private $user;
 

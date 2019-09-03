@@ -1,0 +1,13 @@
+Uzytkownik 
+panel uzytkownika i przegladanie danego posta
+wysietlanie postow danego uzytkownika, mozliwosc edycji
+od najnowszego
+zdjecia do postow
+
+
+zdjecia dodac jako obiekt do bazy
+
+uzytkownik poprzez swoje id w bazie ma dostep do wyswietlania swoich postow oraz ich edycji, edycji "contentu"
+
+
+na stronie glownej brakuje wyswietlania postow od najnowszego(po created_at?) 

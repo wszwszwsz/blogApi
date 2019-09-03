@@ -14,7 +14,7 @@ class FrontController extends AbstractController
      */
     public function main(Request $request)
     {
-        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
+        $posts = $this->getDoctrine()->getRepository(Post::class)->findBy(array(), array('created_at' => 'DESC'));
         return $this->render('front/index.html.twig', array('posts' => $posts));
     }
 
