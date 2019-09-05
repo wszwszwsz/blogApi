@@ -21,6 +21,7 @@
         <h1>Hej! Witaj na prostym blogu^^</h1>
         {% if is_granted('ROLE_USER') %}
             <h2><a href="{{ path('post_write_blog') }}">Napisz se bloga</a></h2>
+            <h2><a href="{{ path('edit_post',{'id': 3}) }}">Edytuj post</a></h2>
             <h2><a href="{{ path('logout') }}">Wyloguj</a></h2>
         {% else %}
             <h2><a href="{{ path('registry') }}">Zarejestruj się</a></h2>

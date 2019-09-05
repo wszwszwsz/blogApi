@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Form\PostAddType;
-use App\Service\PostService;
+use App\Service\EditPostService;
 use Doctrine\ORM\Mapping\PostUpdate;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

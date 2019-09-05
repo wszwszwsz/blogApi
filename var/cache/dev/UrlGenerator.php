@@ -19,6 +19,7 @@ return [
     'login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], []],
     'logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], []],
     'post_write_blog' => [[], ['_controller' => 'App\\Controller\\PostBlogController::create'], [], [['text', '/post/add']], [], []],
+    'edit_post' => [['id'], ['_controller' => 'App\\Controller\\PostBlogController::edit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/post/edit/post']], [], []],
     'post_blog' => [['id'], ['_controller' => 'App\\Controller\\PostBlogController::postBlog'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/post']], [], []],
     'registry' => [[], ['_controller' => 'App\\Controller\\RegistryController::register'], [], [['text', '/registry']], [], []],
 ];
