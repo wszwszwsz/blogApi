@@ -15,14 +15,11 @@ class EditPostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, [
+            ->add('title', TextType::class,  [
                 'label' => 'Tytuł',
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'Treść',
-                'attr' => [
-                    'placeholder' => 'Tu wpisz tekst posta'
-                ]
+                'label' => 'Treść'
             ])
             ->add('submit', SubmitType::class)
         ;
