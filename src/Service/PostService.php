@@ -42,7 +42,7 @@ class PostService
         $this->entityManager->flush();
     }
 
-    public function editPost(string $title, string $content, Post $post)
+    public function editPost(String $title, String $content, Post $post)
     {
         $post->setTitle($title);
         $post->setContent($content);

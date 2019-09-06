@@ -6,6 +6,7 @@ use App\Entity\Post;
 use App\Form\EditPostType;
 use App\Form\PostAddType;
 use App\Service\PostService;
+use PhpParser\Node\Scalar\String_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler;
@@ -137,7 +138,6 @@ class EditPostRequest
 
     /**
      * @Assert\NotBlank()
-     * @ORM\Column(name="content", type="text", nullable=true)
      * @var String
      */
     public $content;
