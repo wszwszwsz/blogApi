@@ -21,7 +21,10 @@
         <h1>Hej! Witaj na prostym blogu^^</h1>
         {% if is_granted('ROLE_USER') %}
             <h2><a href="{{ path('post_write_blog') }}">Napisz se bloga</a></h2>
-
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+              Zalogowany jako: {{ app.user.name }} {{ app.user.lastname }}
+                {% else %}
+            {% endif %}
             <h2><a href="{{ path('logout') }}">Wyloguj</a></h2>
         {% else %}
             <h2><a href="{{ path('registry') }}">Zarejestruj się</a></h2>
@@ -35,9 +38,10 @@
             <p>{{ post.content }}</p>
             {{ post.createdAt|date() }}
             By: {{ post.getUser.name }} {{ post.getUser.lastName }}
-{#            {% if {{ user.id }} === {{ post.id }} %}#}
-            {% if is_granted('ROLE_USER') %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+              {% if  app.user.getid  ==  post.user.id and is_granted('ROLE_USER')  %}
             <a href="{{ path('edit_post',{'id': post.id}) }}"><-Edytuj post</a>
+                  {% else %} {% endif %}
             {% endif %}
         </div>
     {% endfor %}
