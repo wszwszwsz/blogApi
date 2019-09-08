@@ -76,6 +76,7 @@ class PostBlogController extends AbstractController
                     $editPostRequest->content,
                     $post
                 );
+                return $this->redirectToRoute("main");
             }
             return $this->render('edit_post/index.html.twig', [
                 'form' => $form->createView(),]);
