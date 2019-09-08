@@ -26,6 +26,7 @@ class PostService
         $this->user = $tokenStorage->getToken()->getUser();
     }
 
+
     public function addPost(string $title, string $content, User $user) {
         $post = new Post();
         $post->setTitle($title);
@@ -42,6 +43,7 @@ class PostService
         $this->entityManager->flush();
     }
 
+
     public function editPost(String $title, String $content, Post $post)
     {
         $post->setTitle($title);
@@ -49,4 +51,5 @@ class PostService
 
         $this->entityManager->flush();
     }
+
 }

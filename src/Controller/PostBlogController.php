@@ -72,9 +72,9 @@ class PostBlogController extends AbstractController
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $this->postService->editPost(
-                    $post,
                     $editPostRequest->title,
-                    $editPostRequest->content
+                    $editPostRequest->content,
+                    $post
                 );
             }
             return $this->render('edit_post/index.html.twig', [
