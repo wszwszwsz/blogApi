@@ -78,43 +78,23 @@ class PostBlogController extends AbstractController
                 );
                 return $this->redirectToRoute("main");
             }
-            return $this->render('edit_post/index.html.twig', [
+            return $this->render('edit_post/edit.html.twig', [
                 'form' => $form->createView(),]);
 
 
         }
         return $this->redirectToRoute("main");
     }
-//
-//    /**
-//     * @Route("/edit/post/{id}", name="edit_post")
-//     */
 
-
-//    public function edit(Post $post, Request $request)
-//    {
-//
-//        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
-//        $user = $this->getUser();
-//        if ($user && $post->getUser() == $user) {
-//            $EditPostType = $this->createForm(EditPostType::class);
-//            $EditPostType->handleRequest($request);
-//            $EditPostType->get('title')->setData($post->getTitle());
-//            $EditPostType->get('content')->setData($post->getContent());
-//            if ($EditPostType->isSubmitted() && $EditPostType->isValid()) {
-//                $title = $EditPostType->get('title')->getData();
-//                $content = $EditPostType->get('content')->getData();
-//                $this->postService->editPost($title, $content, $post);
-//                return $this->redirectToRoute("main");
-//            }
-//
-//            return $this->render('edit_post/index.html.twig', [
-//                'controller_name' => 'FrontController',
-//                'EditPostType' => $EditPostType->createView(),
-//            ]);
-//        }
-//        return $this->redirectToRoute("main");
-//    }
+    /**
+     * @Route("/edit/post/delete/{id}", name="delete_post")
+     */
+    public function delete(Post $post){
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($post);
+        $manager->flush();
+        return $this->redirectToRoute('main');
+    }
 
     /**
      * @Route("/{id}", name="post_blog")

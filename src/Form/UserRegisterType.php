@@ -31,11 +31,6 @@ class UserRegisterType extends AbstractType
                     'first_options'  => array('label' => 'Password'),
                     'second_options' => array('label' => 'Repeat Password'),
                  ) )
-                // 'first_options'  => array('label' => 'Password'),
-                // 'second_options' => array('label' => 'Repeat Password'),   ->add('password', RepeatedType::class, array(
-                //                'type' => PasswordType::class,
-                //                // 'first_options'  => array('label' => 'Password'),
-                //                // 'second_options' => array('label' => 'Repeat Password'),
 
             ->add('submit', SubmitType::class)
         ;
@@ -48,16 +43,3 @@ class UserRegisterType extends AbstractType
         ]);
     }
 }
-
-//
-//->add('title', TextType::class, [
-//    'label' => 'Tytuł',
-//])
-//    ->add('content', TextareaType::class, [
-//        'label' => 'Treść',
-//        'attr' => [
-//            'placeholder' => 'Tu wpisz tekst posta'
-//        ]
-//    ])
-//    ->add('submit', SubmitType::class)
-//;

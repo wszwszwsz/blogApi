@@ -34,12 +34,7 @@ class PostService
         $post->setCreatedAt(new \DateTime());
         $post->setUser($user);
 
-//        $user = new User();
-//        $user->setName("Anonymous");
-//        $post->setUser($user);
-
         $this->entityManager->persist($post);
-//        $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
 

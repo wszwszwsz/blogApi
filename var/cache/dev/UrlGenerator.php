@@ -20,6 +20,7 @@ return [
     'logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], []],
     'post_write_blog' => [[], ['_controller' => 'App\\Controller\\PostBlogController::create'], [], [['text', '/post/add']], [], []],
     'edit_post' => [['id'], ['_controller' => 'App\\Controller\\PostBlogController::edit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/post/edit/post']], [], []],
+    'delete_post' => [['id'], ['_controller' => 'App\\Controller\\PostBlogController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/post/edit/post/delete']], [], []],
     'post_blog' => [['id'], ['_controller' => 'App\\Controller\\PostBlogController::postBlog'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/post']], [], []],
     'registry' => [[], ['_controller' => 'App\\Controller\\RegistryController::register'], [], [['text', '/registry']], [], []],
 ];

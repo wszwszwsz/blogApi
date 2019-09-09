@@ -22,8 +22,8 @@
         {% if is_granted('ROLE_USER') %}
             <h2><a href="{{ path('post_write_blog') }}">Napisz se bloga</a></h2>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-              Zalogowany jako: {{ app.user.name }} {{ app.user.lastname }}
-                {% else %}
+                Zalogowany jako: {{ app.user.name }} {{ app.user.lastname }}
+            {% else %}
             {% endif %}
             <h2><a href="{{ path('logout') }}">Wyloguj</a></h2>
         {% else %}
@@ -39,24 +39,13 @@
             {{ post.createdAt|date() }}
             By: {{ post.getUser.name }} {{ post.getUser.lastName }}
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-              {% if  app.user.getid  ==  post.user.id and is_granted('ROLE_USER')  %}
-            <a href="{{ path('edit_post',{'id': post.id}) }}"><-Edytuj post</a>
-                  {% else %} {% endif %}
+                {% if  app.user.getid  ==  post.user.id and is_granted('ROLE_USER') %}
+                    <a href="{{ path('edit_post',{'id': post.id}) }}"><-Edytuj post</a>
+                    <a href="{{ path('delete_post',{'id': post.id}) }}"><-Usun post</a>
+
+                {% else %} {% endif %}
             {% endif %}
         </div>
     {% endfor %}
 
 {% endblock %}
-
-
-
-
-
-    {#        <ul>#}
-    {#            <li>Your controller at <code><a#}
-    {#                            href="{{ 'C:/Users/User/PhpstormProjects/blog/src/Controller/FrontController.php'|file_link(0) }}">src/Controller/FrontController.php</a></code>#}
-    {#            </li>#}
-    {#            <li>Your template at <code><a#}
-    {#                            href="{{ 'C:/Users/User/PhpstormProjects/blog/templates/front/post_blog.html.twig'|file_link(0) }}">templates/front/post_blog.html.twig</a></code>#}
-    {#            </li>#}
-    {#        </ul>#}
