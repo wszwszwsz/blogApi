@@ -5488,3 +5488,8 @@
 [2019-09-19 12:34:13] request.INFO: Matched route "api_posts_get_item". {"route":"api_posts_get_item","route_parameters":{"_route":"api_posts_get_item","_controller":"api_platform.action.get_item","_format":null,"_api_resource_class":"App\\Entity\\Post","_api_item_operation_name":"get","id":"3"},"request_uri":"http://blogapi.local/api/posts/3","method":"GET"} []
 [2019-09-19 12:34:13] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
 [2019-09-19 12:34:14] doctrine.DEBUG: SELECT p0_.id AS id_0, p0_.title AS title_1, p0_.content AS content_2, p0_.created_at AS created_at_3, p0_.user_id AS user_id_4 FROM post p0_ WHERE p0_.id = ? [3] []
+[2019-09-19 12:42:10] request.INFO: Matched route "main". {"route":"main","route_parameters":{"_route":"main","_controller":"App\\Controller\\FrontController::main"},"request_uri":"https://blogapi.local/","method":"GET"} []
+[2019-09-19 12:42:10] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
+[2019-09-19 12:42:10] doctrine.DEBUG: SELECT t0.id AS id_1, t0.title AS title_2, t0.content AS content_3, t0.created_at AS created_at_4, t0.user_id AS user_id_5 FROM post t0 ORDER BY t0.created_at DESC [] []
+[2019-09-19 12:42:11] doctrine.DEBUG: SELECT t0.id AS id_1, t0.email AS email_2, t0.roles AS roles_3, t0.password AS password_4, t0.name AS name_5, t0.last_name AS last_name_6 FROM user t0 WHERE t0.id = ? [10] []
+[2019-09-19 12:42:12] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_route":"_wdt","_controller":"web_profiler.controller.profiler::toolbarAction","token":"63668f"},"request_uri":"https://blogapi.local/_wdt/63668f","method":"GET"} []
